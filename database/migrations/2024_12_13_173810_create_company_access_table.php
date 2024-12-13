@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_company_access', function (Blueprint $table) {
+        Schema::create('company_access', function (Blueprint $table) {
             $table->uuid('id')->primary(); // implementação do uuid
             $table->uuid('company_id'); // chave para companies
             $table->uuid('user_id'); // chave para user

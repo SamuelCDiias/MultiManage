@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_company_data', function (Blueprint $table) {
+        Schema::create('company_data', function (Blueprint $table) {
             $table->uuid('id')->primary(); // implementação do uuid
             $table->uuid('company_id'); // chave para o company_id
             $table->string('data_type'); // Tipo de dado Ex: 'financeiro', 'estoque'
