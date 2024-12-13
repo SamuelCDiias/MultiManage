@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Company extends Model
 {
@@ -37,5 +38,15 @@ class Company extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'company_access', 'company_id', 'user_id');
+    }
+
+    // Gerar o UUID automaticamente quando o registro for criado
+    protected static function booted()
+    {
+        static::creating(function ($company) {
+            if (empty($company->id)) {
+                $company->id = (string) Str::uuid(); // Gerar o UUID
+            }
+        });
     }
 }

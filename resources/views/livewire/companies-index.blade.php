@@ -1,13 +1,13 @@
 <div>
     <!-- Lista de Empresas -->
-    {{-- <h2 class="text-2xl font-bold mb-4">Minhas Empresas</h2>
+    <h2 class="text-2xl font-bold mb-4">Minhas Empresas</h2>
     <ul>
         @foreach ($companies as $company)
             <li class="mb-2">
                 <span class="font-semibold">{{ $company->name }}</span> - {{ $company->industry }}
             </li>
         @endforeach
-    </ul> --}}
+    </ul>
 
     <div class="">
 
