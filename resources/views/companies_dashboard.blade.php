@@ -7,6 +7,7 @@
     </x-slot>
 
     <livewire:companies_index />
+    
 
 
 </x-app-layout>

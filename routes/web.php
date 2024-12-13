@@ -14,6 +14,7 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::view('/companies','companies_dashboard')->name('companies.index');
+Route::view('/company/create', 'company_create')->name('company.create');
 
 
 

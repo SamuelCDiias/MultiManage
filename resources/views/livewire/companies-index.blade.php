@@ -1,59 +1,37 @@
-<div>
-    <!-- Lista de Empresas -->
-    <h2 class="text-2xl font-bold mb-4">Minhas Empresas</h2>
-    <ul>
-        @foreach ($companies as $company)
-            <li class="mb-2">
-                <span class="font-semibold">{{ $company->name }}</span> - {{ $company->industry }}
-            </li>
-        @endforeach
-    </ul>
-
-    <div class="">
-
-        <!-- Botão para Mostrar Formulário -->
-        <div class="flex justify-center">
-            @if ($showForm)
-                <button wire:click="toggleForm" class="mt-4 bg-red-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-red-600 transition duration-200">
-                    Cancelar
-                @else
-                <button wire:click="toggleForm" class="mt-4 bg-blue-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-600 transition duration-200">
-                    Cadastrar Nova Empresa
-                @endif
-            </button>
-        </div>
-
-        <!-- Formulário de Cadastro -->
-        @if ($showForm)
-            <div class="flex justify-center mt-6">
-                <form wire:submit.prevent="submitForm" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                    <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Cadastrar Nova Empresa</h2>
-
-                    <div class="mb-4">
-                        <label for="companyName" class="block text-sm font-medium text-gray-700">Nome da Empresa</label>
-                        <input type="text" wire:model="companyName" id="companyName"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required />
-                        @error('companyName')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="industry" class="block text-sm font-medium text-gray-700">Indústria</label>
-                        <input type="text" wire:model="industry" id="industry"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                        @error('industry')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <button type="submit"
-                        class="w-full bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-200">
-                        Cadastrar
-                    </button>
-                </form>
-            </div>
-        @endif
-
+<div class="max-w-4xl mx-auto p-6">
+    <!-- Botão Criar Empresa (Canto Superior Direito) -->
+    <div class="flex justify-end mb-4">
+        <a href="{{route('company.create')}}" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-200">
+            Criar Empresa
+        </a>
     </div>
+
+    <!-- Título -->
+    <h2 class="text-2xl font-bold mb-6 text-center">Minhas Empresas</h2>
+
+    <!-- Tabela de Empresas -->
+    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <table class="min-w-full text-left">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-6 py-3 text-sm font-medium text-gray-600 uppercase">Nome da Empresa</th>
+                    <th class="px-6 py-3 text-sm font-medium text-gray-600 uppercase">Indústria</th>
+                    <th class="px-6 py-3 text-sm font-medium text-gray-600 uppercase text-center">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($companies as $company)
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 text-sm text-gray-800">{{ $company->name }}</td>
+                        <td class="px-6 py-4 text-sm text-gray-600">{{ $company->industry }}</td>
+                        <td class="px-6 py-4 text-center">
+                            <button wire:click="enterCompany({{ $company->id }})" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                                Entrar
+                            </button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
