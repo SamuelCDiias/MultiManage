@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Companies\CompaniesIndex;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,4 +13,9 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::view('/companies','companies_dashboard')->name('companies.index');
+
+
+
+
+require __DIR__ . '/auth.php';
