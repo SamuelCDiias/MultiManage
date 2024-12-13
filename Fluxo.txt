@@ -1,0 +1,68 @@
+Nome do Projeto: MultiManage
+Descrição: Sistema moderno de gestão empresarial, com foco em permitir que usuários gerenciem múltiplas empresas e alterem entre elas para visualizar dados específicos de cada uma.
+
+Funcionalidades Principais:
+Login e Cadastro:
+
+Usuários podem se registrar e logar com suas credenciais.
+Um usuário pode ter acesso a várias empresas e alternar entre elas.
+Dashboard de Empresas:
+
+O usuário pode visualizar um dashboard com dados gerais sobre as empresas que ele administra.
+Cada empresa pode ter dados diferentes, que serão carregados conforme a empresa selecionada.
+Gerenciamento de Dados:
+
+Cada empresa pode ter informações personalizadas, como dados financeiros, relatórios de vendas, estoque, etc.
+Permite visualização e edição de dados associados a cada empresa.
+Funcionalidade de Troca de Empresa:
+
+O usuário pode facilmente trocar entre empresas na interface, e os dados apresentados mudarão de acordo com a empresa selecionada.
+Estrutura do Banco de Dados:
+
+Users (Usuários):
+id (PK)
+name
+email (unique)
+password
+created_at
+updated_at
+
+Companies (Empresas):
+id (PK)
+user_id (FK para users)
+name
+industry
+created_at
+updated_at
+
+CompanyData (Dados da Empresa):
+id (PK)
+company_id (FK para companies)
+data_type
+value
+created_at
+updated_at
+
+CompanyAccess (Acesso a Empresas):
+user_id (FK para users)
+company_id (FK para companies)
+
+
+
+Tecnologias Utilizadas:
+Backend: Laravel 11 + Livewire
+Frontend: Blade + Tailwind CSS
+Banco de Dados: PostgreSQL
+Autenticação: Laravel Breeze ou Laravel Fortify (para autenticação de usuários)
+Interatividade: Livewire para atualização em tempo real sem recarregar a página.
+Estrutura do Projeto:
+Modelos:
+User (relacionado com Companies e CompanyAccess)
+Company (relacionado com CompanyData)
+CompanyData
+CompanyAccess (tabela de relacionamento entre usuários e empresas)
+Fluxo de Usuário:
+O usuário faz login com suas credenciais.
+O sistema exibe uma lista das empresas que o usuário tem acesso.
+O usuário pode selecionar uma empresa e visualizar os dados relacionados a ela.
+O usuário pode alternar entre empresas e visualizar dados diferentes, conforme selecionado.
