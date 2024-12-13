@@ -9,26 +9,17 @@ use Illuminate\Support\Str;
 
 class CompaniesCreate extends Component
 {
-
-    public $showForm = false;
     public $industry;
     public $companyName;
 
-    public function toggleForm()
-    {
-        $this->showForm = !$this->showForm;
-    }
+    protected $rules = [
+        'companyName' => 'required|string|min:3|max:255|unique:companies,name',
+        'industry' => 'required|string|min:3|max:255',
+    ];
 
     public function submitForm()
     {
         $this->validate();
-
-
-        dd([
-            'user_id' => Auth::id(),
-            'name' => $this->companyName,
-            'industry' => $this->industry,
-        ]);
 
         // Criando nova empresa
         Company::create([
@@ -37,20 +28,8 @@ class CompaniesCreate extends Component
             'industry' => $this->industry,
         ]);
 
-        $this->clearForm();
+        return redirect('/companies');
     }
-
-    public function clearForm()
-    {
-        // Resetar campos do formulário
-        $this->companyName = '';
-        $this->industry = '';
-        $this->showForm = false;
-
-        // Recarregar a lista de empresas
-        $this->mount();
-    }
-
 
 
     public function render()

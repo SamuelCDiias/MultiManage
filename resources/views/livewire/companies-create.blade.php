@@ -1,20 +1,6 @@
 <div>
-    <!-- Botão para Mostrar Formulário -->
-    <div class="flex justify-center">
-        @if ($showForm)
-            <button wire:click="toggleForm"
-                class="mt-4 bg-red-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-red-600 transition duration-200">
-                Cancelar
-            @else
-                <button wire:click="toggleForm"
-                    class="mt-4 bg-blue-500 text-white px-6 py-3 rounded-md shadow-md hover:bg-blue-600 transition duration-200">
-                    Cadastrar Nova Empresa
-        @endif
-        </button>
-    </div>
 
     <!-- Formulário de Cadastro -->
-    @if ($showForm)
         <div class="flex justify-center mt-6">
             <form wire:submit.prevent="submitForm" class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
                 <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Cadastrar Nova Empresa</h2>
@@ -44,5 +30,5 @@
                 </button>
             </form>
         </div>
-    @endif
+
 </div>

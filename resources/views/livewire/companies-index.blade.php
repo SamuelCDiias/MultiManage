@@ -1,4 +1,8 @@
 <div class="max-w-4xl mx-auto p-6">
+
+    
+
+
     <!-- Botão Criar Empresa (Canto Superior Direito) -->
     <div class="flex justify-end mb-4">
         <a href="{{route('company.create')}}" class="bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition duration-200">
