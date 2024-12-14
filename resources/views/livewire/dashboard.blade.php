@@ -1,45 +1,7 @@
 <div>
-
-
     <div class="flex min-h-screen bg-gray-100">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-blue-800 text-white flex flex-col">
-            <div class="px-6 py-4 text-lg font-semibold border-b border-blue-700">
-                MultiManage
-            </div>
-            <nav class="flex-1 px-4 py-6 space-y-4">
-                <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m-5 8a5 5 0 1010 0" />
-                    </svg>
-                    Dashboard
-                </a>
-                <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M10 14h6" />
-                    </svg>
-                    Empresas
-                </a>
-                <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition">
-                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a4 4 0 10-8 0v2M5 12h14" />
-                    </svg>
-                    Configurações
-                </a>
-            </nav>
-            <div class="p-4 border-t border-blue-700">
-                <button
-                    class="w-full bg-red-500 px-4 py-2 text-white rounded-lg hover:bg-red-600 transition duration-200">
-                    Sair
-                </button>
-            </div>
-        </aside>
-
         <!-- Main Content -->
-        <main class="flex-1 p-6">
+        <main class="flex-1 p-6 h-full">
             <!-- Header -->
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-semibold text-gray-700">Dashboard</h1>

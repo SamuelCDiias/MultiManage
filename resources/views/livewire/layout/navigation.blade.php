@@ -77,7 +77,7 @@ new class extends Component {
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
-                        <x-dropdown-link :href="route('companies.index')" wire:navigate>
+                        <x-dropdown-link :href="route('companies.show')" wire:navigate>
                             {{ __('Companies') }}
                         </x-dropdown-link>
 
