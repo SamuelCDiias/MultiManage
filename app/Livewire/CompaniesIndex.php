@@ -4,29 +4,28 @@ namespace App\Livewire;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class CompaniesIndex extends Component
 {
+    use WithPagination;
+
+
     // variáveis de acesso do livewire
     public $showForm = false;
+
+    // validação
+    #[Validate('required|string|min:3|max:255')]
     public $industry;
+
+    #[Validate('required|string|min:3|max:255|unique:companies,name')]
     public $companyName;
-    public $companies = [];
 
-
-    // captação de empresas
-    public function mount()
-    {
-        $this->loadCompanies();
-    }
-
-    // carregar empresas
-    public function loadCompanies()
-    {
-        $user = Auth::user();
-        $this->companies = Company::where('user_id', $user->id)->get();
-    }
+    public $confirmDelete = false;
+    public $companyIdtoDelete;
 
     // formulário de criação
 
@@ -36,28 +35,68 @@ class CompaniesIndex extends Component
         $this->showForm = !$this->showForm;
     }
 
-    // validações
-    protected $rules = [
-        'companyName' => 'required|string|min:3|max:255|unique:companies,name',
-        'industry' => 'required|string|min:3|max:255',
-    ];
-
     // criar empresa
     public function createCompany()
     {
         $this->validate();
 
         // Criando nova empresa
-        Company::create([
+        $company = Company::create([
             'user_id' => Auth::id(),
             'name' => $this->companyName,
             'industry' => $this->industry,
         ]);
-        $this->clearForm();
-        $this->loadCompanies();
 
-        session()->flash('message', 'Empresa criada com sucesso');
+
+        // evento de confirmação
+        if ($company->wasRecentlyCreated) {
+
+            // create an event
+            $this->dispatch('contactAdded');
+
+            // success notification
+            $this->dispatch(
+                'notification',
+                type: 'success',
+                title: 'Company created successfully',
+                position: 'center'
+            );
+        } else {
+            $this->dispatch(
+                'notification',
+                type: 'error',
+                title: 'The contact already exists',
+                position: 'center'
+            );
+        }
+        $this->clearForm();
     }
+
+    public function deleteCompany($companyId)
+    {
+
+        $this->companyIdtoDelete = $companyId;
+        $this->confirmDelete = true;
+    }
+
+    public function deleteConfirmed()
+    {
+
+        $company = Company::findOrFail($this->companyIdtoDelete);
+        $company->delete();
+
+        session()->flash('message', 'Empresa excluída com sucesso');
+        $this->confirmDelete = false;
+
+        // Atualizar a listagem de empresas
+        return redirect()->route('companies.index');
+    }
+
+    public function deleteCanceled()
+    {
+        $this->confirmDelete = false;
+    }
+
 
     // limpar formulário
     public function clearForm()
@@ -65,8 +104,6 @@ class CompaniesIndex extends Component
         $this->companyName = '';
         $this->industry = '';
         $this->showForm = false;
-
-        return $this->mount();
     }
 
 
@@ -77,6 +114,8 @@ class CompaniesIndex extends Component
 
     public function render()
     {
-        return view('livewire.companies-index', ['companies' => $this->companies]);
+
+        $companies = Company::where('user_id', Auth::id())->paginate(5);
+        return view('livewire.companies-index', compact('companies'));
     }
 }

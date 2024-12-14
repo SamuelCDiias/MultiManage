@@ -1,11 +1,14 @@
 <div class="max-w-6xl mx-auto p-6">
-    <h2 class="text-2xl font-bold mb-6 text-center">Gestão de Empresas</h2>
+
+
 
     <div class="flex space-x-6">
         <!-- Lista de Empresas -->
         <div class="w-2/3 bg-white shadow-lg rounded-lg overflow-hidden">
             <h3 class="text-lg font-semibold text-gray-700 px-6 py-4">Minhas Empresas</h3>
-            <table class="min-w-full text-left">
+
+            <!-- Tabela de Empresas -->
+            <table class="min-w-full text-left table-auto">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="px-6 py-3 text-sm font-medium text-gray-600 uppercase">Nome da Empresa</th>
@@ -18,16 +21,59 @@
                         <tr class="border-b hover:bg-gray-50">
                             <td class="px-6 py-4 text-sm text-gray-800">{{ $company->name }}</td>
                             <td class="px-6 py-4 text-sm text-gray-600">{{ $company->industry }}</td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="px-6 py-4 text-center space-x-2">
+                                <!-- Botão para Entrar -->
                                 <button wire:click="selectCompany('{{ $company->id }}')"
-                                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200">
+                                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5 inline-block">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                                    </svg>
                                     Entrar
+                                </button>
+
+                                <!-- Botão para Excluir -->
+                                <button wire:click="deleteCompany('{{ $company->id }}')"
+                                    class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 transition duration-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" class="w-5 h-5 inline-block">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                        </path>
+                                    </svg>
+                                    Excluir
                                 </button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            <!-- Confirmação de Exclusão -->
+            @if ($confirmDelete)
+                <div class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 z-50">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-4">Tem certeza que deseja excluir esta
+                            empresa?</h3>
+                        <div class="flex justify-around">
+                            <button wire:click="deleteConfirmed"
+                                class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none">
+                                Sim, Excluir
+                            </button>
+                            <button wire:click="deleteCanceled"
+                                class="bg-gray-500 text-white px-4 py-2 rounded-md hover:bg-gray-600 focus:outline-none">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+            <!-- Paginação -->
+            <div class="mt-4">
+                <div class="flex justify-center">
+                    {{ $companies->links('pagination::tailwind') }}
+                </div>
+            </div>
         </div>
 
         <!-- Formulário de Cadastro -->
@@ -37,7 +83,8 @@
                     <!-- Botão para Fechar -->
                     <button wire:click="toggleForm"
                         class="absolute top-4 right-4 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition duration-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor" class="w-5 h-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -48,7 +95,8 @@
                     <!-- Formulário -->
                     <form wire:submit.prevent="createCompany">
                         <div class="mb-4">
-                            <label for="companyName" class="block text-sm font-medium text-gray-700">Nome da Empresa</label>
+                            <label for="companyName" class="block text-sm font-medium text-gray-700">Nome da
+                                Empresa</label>
                             <input type="text" wire:model="companyName" id="companyName"
                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required />
@@ -81,6 +129,18 @@
                 </div>
             @endif
         </div>
-
     </div>
+
+    <script>
+        window.addEventListener('notification', (event) => {
+            let data = event.detail;
+            Swal.fire({
+                position: data.position,
+                icon: data.type,
+                title: data.title,
+                showConfirmButtom: false,
+                timer: 2000
+            })
+        });
+    </script>
 </div>
