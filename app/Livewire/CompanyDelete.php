@@ -15,12 +15,11 @@ class CompanyDelete extends Component
     #[On('company-delete')]
     public function deleteCompany($companyId)
     {
-        if($this->confirmDelete){
-            return;
+        if(!$this->confirmDelete){
+            $this->companyIdtoDelete = $companyId;
+            $this->confirmDelete = true;
         }
 
-        $this->companyIdtoDelete = $companyId;
-        $this->confirmDelete = true;
 
     }
 

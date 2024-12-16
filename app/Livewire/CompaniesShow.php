@@ -22,6 +22,13 @@ class CompaniesShow extends Component
         $this->dispatch('company-delete', $companyId);
     }
 
+    public function selectCompany($companyId){
+
+        session(['active_company' => $companyId]);
+        return redirect()->route('company.dashboard');
+    }
+
+
     #[On('refresh')]
     public function refresh(){
         $this->resetPage();

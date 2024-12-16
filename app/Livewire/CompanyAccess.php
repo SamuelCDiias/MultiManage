@@ -4,13 +4,16 @@ namespace App\Livewire;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CompanyAccess extends Component
 {
-
+    #[On('company-access')]
     public function selectCompany($companyId)
     {
+        dd($companyId);
+
         $company = Company::where('id', $companyId)->where('user_id', Auth::id())->get();
 
         if (!$company) {

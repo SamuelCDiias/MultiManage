@@ -76,8 +76,6 @@
                 </div>
             </div>
             @endif
-
-
                 <livewire:company-create />
 
 

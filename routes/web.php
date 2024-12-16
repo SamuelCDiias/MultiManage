@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CheckCompanySession;
 use App\Livewire\CompaniesShow;
 use App\Livewire\CompanyCreate;
 use App\Livewire\Dashboard;
@@ -9,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Index::class)->name('index');
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/dashboard', Dashboard::class)->name('company.dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('company.dashboard')->middleware(CheckCompanySession::class);
     Route::get('/company/create', CompanyCreate::class)->name('company.create');
     Route::get('/companies', CompaniesShow::class)->name('companies.show');
 });

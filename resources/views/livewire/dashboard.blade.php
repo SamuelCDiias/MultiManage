@@ -4,11 +4,22 @@
         <main class="flex-1 p-6 h-full">
             <!-- Header -->
             <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-semibold text-gray-700">Dashboard</h1>
-                <button
-                    class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
-                    Nova Ação
-                </button>
+                <h1 class="text-2xl font-semibold text-gray-700">Dashboard {{$company->name}}</h1>
+                <div class="space x-4">
+                    <button
+                        class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
+                        Nova Ação
+                    </button>
+                    <button wire:click='companyAccess'
+                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
+                        Empresa
+                    </button>
+
+                    <button wire:click='companyLogout'
+                        class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
+                        Logout
+                    </button>
+                </div>
             </div>
 
             <!-- Cards -->
@@ -49,7 +60,8 @@
                                     <td class="px-6 py-4 text-sm text-gray-800">{{ $activity['action'] }}</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">{{ $activity['date'] }}</td>
                                     <td class="px-6 py-4 text-sm text-gray-600">
-                                        <span class="px-2 py-1 rounded-full text-white text-xs font-medium
+                                        <span
+                                            class="px-2 py-1 rounded-full text-white text-xs font-medium
                                             {{ $activity['status'] === 'Concluído' ? 'bg-green-500' : 'bg-yellow-500' }}">
                                             {{ $activity['status'] }}
                                         </span>
