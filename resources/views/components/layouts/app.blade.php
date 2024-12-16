@@ -28,15 +28,25 @@
             <!-- Navigation -->
             <nav class="flex-1 px-4 py-6 space-y-4">
 
-                @if(session('active_company'))
-                <a href="{{ route('company.dashboard') }}"
-                    class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition" wire:navigate>
-                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m-5 8a5 5 0 1010 0" />
-                    </svg>
-                    Dashboard
-                </a>
+                @if (session('active_company'))
+                    <a href="{{ route('company.dashboard') }}"
+                        class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition" wire:navigate>
+                        <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 10h11M9 21V3m-5 8a5 5 0 1010 0" />
+                        </svg>
+                        Dashboard
+                    </a>
+
+                    <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+                        wire:navigate>
+                        <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a4 4 0 10-8 0v2M5 12h14" />
+                        </svg>
+                        Configurações
+                    </a>
                 @endif
 
                 <a href="{{ route('companies.show') }}"
@@ -46,14 +56,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M10 14h6" />
                     </svg>
                     Empresas
-                </a>
-                <a href="#" class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-                    wire:navigate>
-                    <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a4 4 0 10-8 0v2M5 12h14" />
-                    </svg>
-                    Configurações
                 </a>
             </nav>
             <!-- Logout -->

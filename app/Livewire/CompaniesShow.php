@@ -3,9 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Company;
+use App\Models\CompanyAccess;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
-use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -13,16 +14,19 @@ class CompaniesShow extends Component
 {
     use WithPagination;
 
-    public function createCompany(){
+    public function createCompany()
+    {
         $this->dispatch('company-create');
     }
 
-    public function deleteCompany($companyId) {
+    public function deleteCompany($companyId)
+    {
 
         $this->dispatch('company-delete', $companyId);
     }
 
-    public function selectCompany($companyId){
+    public function selectCompany($companyId)
+    {
 
         session(['active_company' => $companyId]);
         return redirect()->route('company.dashboard');
@@ -30,14 +34,29 @@ class CompaniesShow extends Component
 
 
     #[On('refresh')]
-    public function refresh(){
+    public function refresh()
+    {
         $this->resetPage();
     }
 
+    public function getAllCompanies(){
+
+        $userId = Auth::id();
+
+        $companyAccess = CompanyAccess::where('user_id', $userId);
+
+        $companyIds = $companyAccess->pluck('company_id');
+
+        $companies = Company::whereIn('id', $companyIds)->paginate(5);
+
+        return $companies;
+
+    }
 
     public function render()
     {
-        $companies = Company::where('user_id', Auth::id())->paginate(5);
+        $companies = $this->getAllCompanies();
+
         return view('livewire.companies-show', compact('companies'));
     }
 }
