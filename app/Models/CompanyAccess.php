@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class CompanyAccess extends Model
 {
     use HasFactory;
 
+    protected $table = 'company_access';
+
     protected $fillable = [
-        'user_id',
         'company_id',
+        'user_id',
+        'role'
     ];
 
     // Relacionamento com User
@@ -24,6 +28,17 @@ class CompanyAccess extends Model
     public function company()
     {
         return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    // gerar uuid antes de criar o usuário
+    public static function booted()
+    {
+        static::creating(function ($company) {
+            // Gerar o UUID automaticamente se o id não for atribuído
+            if (empty($company->id)) {
+                $company->id = (string) Str::uuid();
+            }
+        });
     }
 }
 

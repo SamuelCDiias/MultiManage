@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Company;
+use App\Models\CompanyAccess;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
@@ -28,6 +29,15 @@ class CompanyCreate extends Component
         $this->showForm = true;
     }
 
+    public function linkCompany($companyId, $userId){
+        // Cria o registro na tabela company_access
+        CompanyAccess::create([
+            'user_id' => $userId,
+            'company_id' => $companyId,
+            'role' => 'admin'
+        ]);
+    }
+
     public function createCompany()
     {
         $this->validate();
@@ -39,6 +49,12 @@ class CompanyCreate extends Component
             'industry' => $this->industry,
         ]);
 
+
+        $companyId = $company->id;
+        $userId = $company->user_id;
+
+        // linkar na tabela de user access como usuário
+        $this->linkCompany($companyId, $userId);
 
         // evento de confirmação
         if ($company->wasRecentlyCreated) {

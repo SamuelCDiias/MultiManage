@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary(); // implementação do uuid
             $table->uuid('company_id'); // chave para companies
             $table->uuid('user_id'); // chave para user
+            $table->string('role')->default('user');
             $table->timestamps();
 
             // definindo a chave estrangeira para a tabela companies e users

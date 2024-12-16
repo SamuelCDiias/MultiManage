@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckCompanySession;
+use App\Livewire\AddUserToCompany;
 use App\Livewire\CompaniesShow;
 use App\Livewire\CompanyCreate;
 use App\Livewire\Dashboard;
@@ -13,6 +14,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', Dashboard::class)->name('company.dashboard')->middleware(CheckCompanySession::class);
     Route::get('/company/create', CompanyCreate::class)->name('company.create');
     Route::get('/companies', CompaniesShow::class)->name('companies.show');
+    Route::get('/selectUser', AddUserToCompany::class)->name('user.add');
 });
 
 

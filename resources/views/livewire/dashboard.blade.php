@@ -4,17 +4,12 @@
         <main class="flex-1 p-6 h-full">
             <!-- Header -->
             <div class="flex justify-between items-center mb-6">
-                <h1 class="text-2xl font-semibold text-gray-700">Dashboard {{$company->name}}</h1>
-                <div class="space x-4">
+                <h1 class="text-2xl font-semibold text-gray-700">Dashboard {{ $company->name }}</h1>
+                <div class="space-x-4">
                     <button
                         class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200">
                         Nova Ação
                     </button>
-                    <button wire:click='companyAccess'
-                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-200">
-                        Empresa
-                    </button>
-
                     <button wire:click='companyLogout'
                         class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition duration-200">
                         Logout
@@ -22,6 +17,8 @@
                 </div>
             </div>
 
+            <livewire:add-user-to-company />
+            
             <!-- Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white shadow-lg rounded-lg p-6">
@@ -74,7 +71,6 @@
             </div>
         </main>
     </div>
-
 
 
 </div>

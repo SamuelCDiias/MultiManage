@@ -16,8 +16,8 @@ class Dashboard extends Component
     }
 
 
-    public function companyAccess(){
-        dd(session('active_company'));
+    public function userAccess(){
+        $this->dispatch('user-select');
     }
 
     public function companyLogout(){
