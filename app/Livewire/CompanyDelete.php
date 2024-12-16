@@ -3,11 +3,17 @@
 namespace App\Livewire;
 
 use App\Models\Company;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CompanyDelete extends Component
 {
+
+
+
+
 
     public $confirmDelete = false;
     public $companyIdtoDelete;
@@ -15,18 +21,29 @@ class CompanyDelete extends Component
     #[On('company-delete')]
     public function deleteCompany($companyId)
     {
-        if(!$this->confirmDelete){
+        if (!$this->confirmDelete) {
             $this->companyIdtoDelete = $companyId;
             $this->confirmDelete = true;
         }
-
-
     }
 
     public function deleteConfirmed()
     {
 
         $company = Company::findOrFail($this->companyIdtoDelete);
+
+        if (Gate::denies('is-admin', $this->companyIdtoDelete)) {
+
+            $this->dispatch(
+                'notification',
+                type: 'error',
+                title: 'Access denied',
+                position: 'center'
+            );
+
+            return;
+        }
+
         $company->delete();
 
         session()->flash('message', 'Empresa excluída com sucesso');
