@@ -27,7 +27,6 @@ class CompaniesShow extends Component
 
     public function selectCompany($companyId)
     {
-
         session(['active_company' => $companyId]);
         return redirect()->route('company.dashboard');
     }

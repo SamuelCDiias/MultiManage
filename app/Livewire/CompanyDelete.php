@@ -46,9 +46,11 @@ class CompanyDelete extends Component
 
         $company->delete();
 
-        session()->flash('message', 'Empresa excluída com sucesso');
+        session()->forget('active_company');
 
         $this->confirmDelete = false;
+
+
 
         return redirect()->route('companies.show');
     }

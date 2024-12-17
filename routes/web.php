@@ -15,9 +15,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/company/dashboard', Dashboard::class)->name('company.dashboard')->middleware(CheckCompanySession::class);
     Route::get('/company/configuration', CompanyConfiguration::class)->name('company.configuration')->middleware(CheckCompanySession::class);
     Route::get('/company/create', CompanyCreate::class)->name('company.create');
-    Route::get('/companies', CompaniesShow::class)->name('companies.show');
     Route::get('/selectUser', AddUserToCompany::class)->name('user.add');
-
+    Route::get('/companies', CompaniesShow::class)->name('companies.show');
 });
 
 
