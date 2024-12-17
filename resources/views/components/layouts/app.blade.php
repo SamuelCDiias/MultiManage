@@ -27,21 +27,21 @@
             <div class="px-6 py-4 text-lg font-semibold border-b border-blue-700">
                 {{ config('app.name', 'Laravel') }}
             </div>
+
             <!-- Navigation -->
-
-
             <nav class="flex-1 px-4 py-6 space-y-4">
                 @if (session('active_company'))
-                    <a href="{{route('company.dashboard')}}"
+                    <a href="{{ route('company.dashboard') }}"
                         class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">
                         <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21V3m-5 8a5 5 0 1010 0" />
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 10h11M9 21V3m-5 8a5 5 0 1010 0" />
                         </svg>
                         Dashboard
                     </a>
 
-                    <a href="{{route('company.configuration')}}"
+                    <a href="{{ route('company.configuration') }}"
                         class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">
                         <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
@@ -50,7 +50,7 @@
                         Configurações
                     </a>
                 @endif
-                <a href="{{route('companies.show')}}" 
+                <a href="{{ route('companies.show') }}"
                     class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">
                     <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
@@ -58,7 +58,13 @@
                     </svg>
                     Empresas
                 </a>
+
             </nav>
+            <a href="/logout" class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition duration-300"
+                wire:click="logout">
+                Sair
+            </a>
+
         </aside>
 
         <div class="flex-1 ml-64 p-6">
@@ -66,6 +72,7 @@
         </div>
 
     </div>
+
 
 
 
