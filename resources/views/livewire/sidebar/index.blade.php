@@ -1,32 +1,59 @@
-<div>
-    <!-- Banner Principal -->
-    <div class="relative bg-cover bg-center h-96" style="background-image: url('https://source.unsplash.com/random/1600x900');">
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center">
-            <h1 class="text-4xl font-bold text-white">Bem-vindo ao {{ config('app.name', 'Laravel') }}</h1>
-            <p class="text-gray-300 text-lg mt-4">Explore nossos serviços e descubra como podemos ajudar você!</p>
-            <a href="{{ route('register') }}" class="mt-6 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition">
-                Cadastre-se Agora
-            </a>
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 to-teal-400">
+    <div class="w-full max-w-6xl px-6 py-12 bg-white rounded-lg shadow-xl">
+
+        <!-- Seção de boas-vindas -->
+        <div class="text-center mb-12">
+            <h2 class="text-5xl font-extrabold text-gray-900 mb-6">Bem-vindo ao MultiManage</h2>
+            <p class="text-xl text-gray-600 mb-8">
+                A solução definitiva para gerenciar múltiplas empresas com facilidade e eficiência.
+            </p>
+            <div class="space-y-6">
+                <a href="{{route('register')}}"
+                    class="inline-block px-10 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105">
+                    Começar Agora
+                </a>
+                <a href="#"
+                    class="inline-block px-10 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105">
+                    Saiba Mais
+                </a>
+            </div>
+        </div>
+
+        <!-- Seção de funcionalidades -->
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Funcionalidade 1 -->
+            <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Gestão Simplificada</h3>
+                <p class="text-center text-gray-600">Gerencie todas as suas empresas em um único lugar, de forma intuitiva e eficiente.</p>
+            </div>
+
+            <!-- Funcionalidade 2 -->
+            <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Relatórios em Tempo Real</h3>
+                <p class="text-center text-gray-600">Acompanhe os resultados de suas empresas com relatórios detalhados e atualizados em tempo real.</p>
+            </div>
+
+            <!-- Funcionalidade 3 -->
+            <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">Segurança e Privacidade</h3>
+                <p class="text-center text-gray-600">Com recursos avançados de segurança, seus dados estão sempre protegidos e privados.</p>
+            </div>
+        </div>
+
+        <!-- Seção de links -->
+        <div class="mt-12 text-center">
+            <p class="text-sm text-gray-600 mb-2">Já tem uma conta?</p>
+            <a href="{{route('login')}}"
+                class="text-sm font-medium text-indigo-600 hover:underline transition-all duration-200">Faça login</a>
         </div>
     </div>
-
-    <!-- Conteúdo Principal -->
-    <main class="container mx-auto px-6 py-12">
-        <h2 class="text-3xl font-semibold text-center mb-6">Nossos Serviços</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card de Serviço -->
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-4">Gestão de Empresas</h3>
-                <p class="text-gray-600 dark:text-gray-300">Gerencie múltiplas empresas de forma eficiente e prática.</p>
-            </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-4">Relatórios Personalizados</h3>
-                <p class="text-gray-600 dark:text-gray-300">Obtenha relatórios detalhados e adaptados às suas necessidades.</p>
-            </div>
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-4">Segurança de Dados</h3>
-                <p class="text-gray-600 dark:text-gray-300">Seus dados estão protegidos com a mais alta segurança.</p>
-            </div>
-        </div>
-    </main>
 </div>
