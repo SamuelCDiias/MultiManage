@@ -82,6 +82,8 @@ class AddUserToCompany extends Component
             title: 'User linked successfully',
             position: 'center'
         );
+
+        $this->dispatch('user-linked');
     }
 
 

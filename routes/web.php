@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\CheckCompanySession;
+use App\Http\Middleware\CheckIsAdmin;
 use App\Livewire\AddUserToCompany;
 use App\Livewire\CompaniesShow;
 use App\Livewire\CompanyConfiguration;
@@ -13,9 +14,9 @@ Route::get('/', Index::class)->name('index');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/company/dashboard', Dashboard::class)->name('company.dashboard')->middleware(CheckCompanySession::class);
-    Route::get('/company/configuration', CompanyConfiguration::class)->name('company.configuration')->middleware(CheckCompanySession::class);
+    Route::get('/company/configuration', CompanyConfiguration::class)->name('company.configuration')->middleware(CheckCompanySession::class)->middleware(CheckIsAdmin::class);
     Route::get('/company/create', CompanyCreate::class)->name('company.create');
-    Route::get('/selectUser', AddUserToCompany::class)->name('user.add');
+    Route::get('/selectUser', AddUserToCompany::class)->name('user.add')->middleware(CheckIsAdmin::class);
     Route::get('/companies', CompaniesShow::class)->name('companies.show');
 });
 

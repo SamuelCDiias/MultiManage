@@ -3,21 +3,22 @@
 namespace App\Livewire;
 
 use App\Models\Company;
-use Illuminate\Support\Facades\Auth;
+use App\Models\CompanyAccess;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class CompanyDelete extends Component
+class UserCompanyDelete extends Component
 {
-    public $confirmDelete = false;
-    public $companyIdtoDelete;
 
-    #[On('company-delete')]
-    public function deleteCompany($companyId)
+    public $confirmDelete = false;
+    public $userIdToDelete;
+
+    #[On('user-delete-to-company')]
+    public function deleteUser($userId)
     {
         if (!$this->confirmDelete) {
-            $this->companyIdtoDelete = $companyId;
+            $this->userIdToDelete = $userId;
             $this->confirmDelete = true;
         }
     }
@@ -25,9 +26,9 @@ class CompanyDelete extends Component
     public function deleteConfirmed()
     {
 
-        $company = Company::findOrFail($this->companyIdtoDelete);
+        $userAccess = CompanyAccess::findOrFail($this->userIdToDelete);
 
-        if (Gate::denies('is-admin', $this->companyIdtoDelete)) {
+        if (Gate::denies('is-admin', $this->userIdToDelete)) {
 
             $this->dispatch(
                 'notification',
@@ -39,13 +40,19 @@ class CompanyDelete extends Component
             return;
         }
 
-        $company->delete();
+        $userAccess->delete();
 
-        session()->forget('active_company');
+        $this->dispatch('user-deleteded-for-company');
 
         $this->confirmDelete = false;
 
-        return redirect()->route('companies.show');
+        // Notifica o sucesso
+        $this->dispatch(
+            'notification',
+            type: 'success',
+            title: 'User removed successfully',
+            position: 'center'
+        );
     }
 
     public function deleteCanceled()
@@ -56,6 +63,6 @@ class CompanyDelete extends Component
 
     public function render()
     {
-        return view('livewire.company-delete');
+        return view('livewire.user-company-delete');
     }
 }
