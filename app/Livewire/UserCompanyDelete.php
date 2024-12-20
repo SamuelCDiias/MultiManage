@@ -13,6 +13,7 @@ class UserCompanyDelete extends Component
 
     public $confirmDelete = false;
     public $userIdToDelete;
+    public $company;
 
     #[On('user-delete-to-company')]
     public function deleteUser($userId)
@@ -20,29 +21,15 @@ class UserCompanyDelete extends Component
         if (!$this->confirmDelete) {
             $this->userIdToDelete = $userId;
             $this->confirmDelete = true;
+            $this->company = session('active_company');
         }
     }
 
     public function deleteConfirmed()
     {
-
-        $userAccess = CompanyAccess::findOrFail($this->userIdToDelete);
-
-        if (Gate::denies('is-admin', $this->userIdToDelete)) {
-
-            $this->dispatch(
-                'notification',
-                type: 'error',
-                title: 'Access denied',
-                position: 'center'
-            );
-
-            return;
-        }
+        $userAccess = CompanyAccess::where('user_id', $this->userIdToDelete)->where('company_id', $this->company);
 
         $userAccess->delete();
-
-        $this->dispatch('user-deleteded-for-company');
 
         $this->confirmDelete = false;
 
@@ -53,6 +40,9 @@ class UserCompanyDelete extends Component
             title: 'User removed successfully',
             position: 'center'
         );
+
+        $this->dispatch('refresh');
+
     }
 
     public function deleteCanceled()

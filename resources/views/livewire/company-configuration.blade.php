@@ -31,7 +31,7 @@
                             <td class="px-6 py-4">{{ $access->user->email }}</td>
                             <td class="px-6 py-4">{{ $access->role }}</td>
                             <td class="px-6 py-4 text-center">
-                                <button class="text-red-500 hover:text-red-700 transition duration-300">
+                                <button wire:click="deleteUser('{{$access->user->id}}')" class="text-red-500 hover:text-red-700 transition duration-300">
                                     Remover
                                 </button>
                             </td>
@@ -39,6 +39,7 @@
                     @endforeach
                 </tbody>
             </table>
+            {{-- Remover usuário da --}}
             <livewire:user-company-delete />
         </div>
     </div>

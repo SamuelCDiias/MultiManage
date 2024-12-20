@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Models\Company;
 use App\Models\CompanyAccess;
 use App\Models\User;
 use Livewire\Component;
@@ -83,7 +82,7 @@ class AddUserToCompany extends Component
             position: 'center'
         );
 
-        $this->dispatch('user-linked');
+        $this->dispatch('refresh');
     }
 
 
