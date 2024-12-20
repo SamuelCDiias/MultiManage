@@ -2,12 +2,12 @@
 
 use App\Http\Middleware\CheckCompanySession;
 use App\Http\Middleware\CheckIsAdmin;
-use App\Livewire\Users\AddUserToCompany;
 use App\Livewire\Company\CompaniesShow;
 use App\Livewire\Company\CompanyConfiguration;
 use App\Livewire\Company\CompanyCreate;
 use App\Livewire\SideBar\Dashboard;
 use App\Livewire\SideBar\Index;
+use App\Livewire\Users\AddUserToCompany;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class)->name('index');
@@ -21,4 +21,4 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
