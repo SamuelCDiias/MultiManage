@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Users;
 
-use App\Models\Company;
 use App\Models\CompanyAccess;
-use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -53,6 +51,6 @@ class UserCompanyDelete extends Component
 
     public function render()
     {
-        return view('livewire.user-company-delete');
+        return view('livewire.users.user-company-delete');
     }
 }

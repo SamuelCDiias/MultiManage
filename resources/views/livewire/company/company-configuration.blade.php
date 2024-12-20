@@ -40,13 +40,13 @@
                 </tbody>
             </table>
             {{-- Remover usuário da --}}
-            <livewire:user-company-delete />
+            <livewire:users.user-company-delete />
         </div>
     </div>
 
     <!-- Adicionar Usuário -->
     <div class="mt-6">
-        <livewire:add-user-to-company />
+        <livewire:users.add-user-to-company />
     </div>
 
     <!-- Botão para Excluir -->
@@ -59,6 +59,6 @@
         Excluir
     </button>
 
-    <livewire:company-delete />
+    <livewire:company.company-delete />
 
 </div>

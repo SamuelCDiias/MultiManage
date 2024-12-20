@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Models\Company;
 use Illuminate\Support\Facades\Auth;
@@ -56,6 +56,6 @@ class CompanyDelete extends Component
 
     public function render()
     {
-        return view('livewire.company-delete');
+        return view('livewire.company.company-delete');
     }
 }

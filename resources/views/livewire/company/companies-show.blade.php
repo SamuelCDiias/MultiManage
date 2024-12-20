@@ -54,7 +54,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <livewire:company-delete />
+                    <livewire:company.company-delete />
                     <!-- Paginação -->
                     <div class="mt-6 px-6 py-4">
                         <div class="flex justify-center">
@@ -65,7 +65,7 @@
                 </div>
             </div>
             @endif
-                <livewire:company-create />
+                <livewire:company.company-create />
 
 
 

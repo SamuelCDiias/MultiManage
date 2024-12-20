@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Users;
 
 use App\Models\CompanyAccess;
 use App\Models\User;
@@ -88,6 +88,6 @@ class AddUserToCompany extends Component
 
     public function render()
     {
-        return view('livewire.add-user-to-company');
+        return view('livewire.users.add-user-to-company');
     }
 }

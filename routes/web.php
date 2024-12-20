@@ -2,12 +2,12 @@
 
 use App\Http\Middleware\CheckCompanySession;
 use App\Http\Middleware\CheckIsAdmin;
-use App\Livewire\AddUserToCompany;
-use App\Livewire\CompaniesShow;
-use App\Livewire\CompanyConfiguration;
-use App\Livewire\CompanyCreate;
-use App\Livewire\Dashboard;
-use App\Livewire\Index;
+use App\Livewire\Users\AddUserToCompany;
+use App\Livewire\Company\CompaniesShow;
+use App\Livewire\Company\CompanyConfiguration;
+use App\Livewire\Company\CompanyCreate;
+use App\Livewire\SideBar\Dashboard;
+use App\Livewire\SideBar\Index;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class)->name('index');

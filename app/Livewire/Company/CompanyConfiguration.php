@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Models\Company;
 use App\Models\CompanyAccess;
@@ -36,6 +36,6 @@ class CompanyConfiguration extends Component
     #[On('refresh')]
     public function render()
     {
-        return view('livewire.company-configuration', ['company' => $this->company, 'companyAccess' => $this->companyAccess]);
+        return view('livewire.company.company-configuration', ['company' => $this->company, 'companyAccess' => $this->companyAccess]);
     }
 }

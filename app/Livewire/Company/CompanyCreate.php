@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Models\Company;
 use App\Models\CompanyAccess;
@@ -92,6 +92,6 @@ class CompanyCreate extends Component
 
     public function render()
     {
-        return view('livewire.company-create');
+        return view('livewire.company.company-create');
     }
 }

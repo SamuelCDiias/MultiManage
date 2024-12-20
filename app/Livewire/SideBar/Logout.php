@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\SideBar;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -19,6 +19,6 @@ public function logout(){
 
     public function render()
     {
-        return view('livewire.logout');
+        return view('livewire.sidebar.logout');
     }
 }

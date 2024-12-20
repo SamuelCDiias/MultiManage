@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\SideBar;
 
 use App\Models\Company;
 use Livewire\Component;
@@ -28,6 +28,6 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.dashboard', ['company' => $this->company]);
+        return view('livewire.sidebar.dashboard', ['company' => $this->company]);
     }
 }

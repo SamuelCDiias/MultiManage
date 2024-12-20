@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Company;
 
 use App\Models\Company;
 use App\Models\CompanyAccess;
@@ -50,6 +50,6 @@ class CompaniesShow extends Component
     {
         $companies = $this->getAllCompanies();
 
-        return view('livewire.companies-show', compact('companies'));
+        return view('livewire.company.companies-show', compact('companies'));
     }
 }

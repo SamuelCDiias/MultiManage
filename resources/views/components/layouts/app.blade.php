@@ -64,7 +64,7 @@
 
             </nav>
             <div class="p-4 border-t border-blue-700">
-                <livewire:logout />
+                <livewire:SideBar.logout />
             </div>
 
         </aside>
