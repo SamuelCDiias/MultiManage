@@ -15,11 +15,6 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    @php
-        $userId = Auth::user()->id;
-        $session = session('active_company');
-    @endphp
-
 </head>
 
 <body class="font-sans antialiased">
@@ -45,7 +40,8 @@
                         </svg>
                         Dashboard
                     </a>
-                    @can('is-admin', [$userId, $session])
+
+                    @can('is-admin', Auth::user())
                         <a href="{{ route('company.configuration') }}"
                             class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">
                             <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -55,7 +51,7 @@
                             Configurações
                         </a>
                     @endcan
-                    
+
                 @endif
                 <a href="{{ route('companies.show') }}"
                     class="flex items-center px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">

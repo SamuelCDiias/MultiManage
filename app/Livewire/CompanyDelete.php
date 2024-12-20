@@ -27,7 +27,7 @@ class CompanyDelete extends Component
 
         $company = Company::findOrFail($this->companyIdtoDelete);
 
-        if (Gate::denies('is-admin', $this->companyIdtoDelete)) {
+        if (Gate::denies('is-admin', Auth::user())) {
 
             $this->dispatch(
                 'notification',

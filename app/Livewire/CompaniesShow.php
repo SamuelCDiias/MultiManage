@@ -19,12 +19,6 @@ class CompaniesShow extends Component
         $this->dispatch('company-create');
     }
 
-    public function deleteCompany($companyId)
-    {
-
-        $this->dispatch('company-delete', $companyId);
-    }
-
     public function selectCompany($companyId)
     {
         session(['active_company' => $companyId]);

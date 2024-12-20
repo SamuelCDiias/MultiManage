@@ -19,13 +19,16 @@ class CheckIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::Check()){
-            if(Auth::user()->role === 'admin'){
+        if (Auth::Check()) {
+            $user = Auth::user();
+            $companyId = session('active_company');
+            $companyAcess = CompanyAccess::where('user_id', $user->id)
+                ->where('company_id', $companyId)
+                ->first();
+            if ($companyAcess) {
                 return $next($request);
             }
         }
-
         return redirect()->back();
-
     }
 }

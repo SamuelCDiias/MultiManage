@@ -4,8 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Company;
 use App\Models\CompanyAccess;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CompanyConfiguration extends Component
@@ -13,6 +11,7 @@ class CompanyConfiguration extends Component
     public $company;
 
     public $companyAccess;
+
 
     public function mount()
     {
@@ -23,6 +22,12 @@ class CompanyConfiguration extends Component
         $this->companyAccess = CompanyAccess::where('company_id', $companyId)
         ->with('user')
         ->get();
+    }
+
+    public function deleteCompany($companyId)
+    {
+        
+        $this->dispatch('company-delete', $companyId);
     }
 
     public function render()

@@ -10,8 +10,11 @@ class CompanyAccess extends Model
 {
     use HasFactory;
 
-    protected $table = 'company_access';
+    protected $keyType = 'string';
+    public $incrementing = false;
 
+    protected $table = 'company_access';
+    
     protected $fillable = [
         'company_id',
         'user_id',
