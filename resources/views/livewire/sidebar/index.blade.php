@@ -8,8 +8,8 @@
                 A solução definitiva para gerenciar múltiplas empresas com facilidade e eficiência.
             </p>
             <div class="space-y-6">
-                <a href="{{route('register')}}"
-                    class="inline-block px-10 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105">
+                <a wire:click="register"
+                    class="inline-block px-10 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105 cursor-pointer">
                     Começar Agora
                 </a>
                 <a href="#"
@@ -52,8 +52,8 @@
         <!-- Seção de links -->
         <div class="mt-12 text-center">
             <p class="text-sm text-gray-600 mb-2">Já tem uma conta?</p>
-            <a href="{{route('login')}}"
-                class="text-sm font-medium text-indigo-600 hover:underline transition-all duration-200">Faça login</a>
+            <a wire:click="login"
+                class="text-sm font-medium text-indigo-600 hover:underline transition-all duration-200 cursor-pointer">Faça login</a>
         </div>
     </div>
 </div>
