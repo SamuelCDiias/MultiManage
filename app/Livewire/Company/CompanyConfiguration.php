@@ -13,6 +13,7 @@ class CompanyConfiguration extends Component
 
     public $companyAccess;
 
+    #[On('refresh')]
     public function mount()
     {
         $companyId = session('active_company');
@@ -33,7 +34,7 @@ class CompanyConfiguration extends Component
         $this->dispatch('user-delete-to-company', $userId);
     }
 
-    #[On('refresh')]
+
     public function render()
     {
         return view('livewire.company.company-configuration', ['company' => $this->company, 'companyAccess' => $this->companyAccess]);
