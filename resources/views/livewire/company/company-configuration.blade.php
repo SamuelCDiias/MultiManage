@@ -62,4 +62,7 @@
 
     <!-- Livewire para deletar empresa -->
     <livewire:company.company-delete />
+
+    {{-- Livewire para deletar empresa --}}
+    <livewire:users.user-company-delete />
 </div>
