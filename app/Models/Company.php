@@ -10,10 +10,9 @@ class Company extends Model
 {
     use HasFactory;
 
-    // Definir o tipo da chave primária como string (UUID)
+    // Definir o tipo da chave primária como (UUID)
     protected $keyType = 'string';
 
-    // Indicar que a chave primária não é auto-incrementável
     public $incrementing = false;
 
 

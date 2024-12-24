@@ -23,8 +23,12 @@ class CompaniesShow extends Component
 
     public function selectCompany($companyId)
     {
-        session(['active_company' => $companyId]);
-        return redirect()->route('company.dashboard');
+        // session(['active_company' => $companyId]);
+        session()->put('active_company', $companyId);
+
+        // return redirect()->route('company.dashboard');
+        return redirect()->to(route('company.dashboard'));
+        // return $this->redirect(route('company.dashboard'), navigate:true);
     }
 
     public function getAllCompanies()
