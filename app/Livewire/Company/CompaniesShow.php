@@ -14,6 +14,8 @@ class CompaniesShow extends Component
 {
     use WithPagination;
 
+    public $nameFilter = '';
+
     public function createCompany()
     {
         $this->dispatch('company-create');
@@ -21,18 +23,16 @@ class CompaniesShow extends Component
 
     public function selectCompany($companyId)
     {
-        session(['active_company' => $companyId]);
-        return redirect()->route('company.dashboard');
+        // session(['active_company' => $companyId]);
+        session()->put('active_company', $companyId);
+
+        // return redirect()->route('company.dashboard');
+        return redirect()->to(route('company.dashboard'));
+        // return $this->redirect(route('company.dashboard'), navigate:true);
     }
 
-
-    #[On('refresh')]
-    public function refresh()
+    public function getAllCompanies()
     {
-        $this->resetPage();
-    }
-
-    public function getAllCompanies(){
 
         $userId = Auth::id();
 
@@ -40,12 +40,19 @@ class CompaniesShow extends Component
 
         $companyIds = $companyAccess->pluck('company_id');
 
-        $companies = Company::whereIn('id', $companyIds)->paginate(5);
+        $companies = Company::whereIn('id', $companyIds);
 
-        return $companies;
+        if ($this->nameFilter) {
+            $companies->where(function ($query) {
+                $query->where('name', 'ILIKE', '%' . $this->nameFilter . '%')
+                    ->orWhere('industry', 'ILIKE', '%' . $this->nameFilter . '%');
+            });
+        }
 
+        return $companies->paginate(5);
     }
 
+    #[On('refresh')]
     public function render()
     {
         $companies = $this->getAllCompanies();

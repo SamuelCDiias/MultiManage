@@ -22,7 +22,9 @@ new #[Layout('layouts.guest')] class extends Component
 
         return redirect()->route('companies.show');
     }
-}; ?>
+};
+
+?>
 
 <div>
     <!-- Session Status -->

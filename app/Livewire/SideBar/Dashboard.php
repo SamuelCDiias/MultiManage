@@ -25,6 +25,10 @@ class Dashboard extends Component
         return redirect()->route('companies.show');
     }
 
+    public function createTask() {
+        $this->dispatch('createTask', session('active_company'));
+    }
+
 
     public function render()
     {
