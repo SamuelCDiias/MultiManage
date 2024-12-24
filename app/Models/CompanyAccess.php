@@ -2,19 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class CompanyAccess extends Model
 {
-    use HasFactory;
-
     protected $keyType = 'string';
     public $incrementing = false;
 
     protected $table = 'company_access';
-    
+
     protected $fillable = [
         'company_id',
         'user_id',

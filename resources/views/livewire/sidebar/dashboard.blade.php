@@ -6,14 +6,22 @@
             <div class="flex justify-between items-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800">{{ $company->name }} - Dashboard</h1>
                 <div class="space-x-4">
+
+                    <button wire:click='createTask'
+                        class="bg-blue-500 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out shadow-md">
+                        Criar tarefa
+                    </button>
+
                     <button
                         class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700 transition duration-300 ease-in-out shadow-md">
                         Nova Ação
                     </button>
+
                     <button wire:click='companyLogout'
                         class="bg-red-600 text-white px-5 py-2 rounded-lg hover:bg-red-700 transition duration-300 ease-in-out shadow-md">
                         Logout
                     </button>
+
                 </div>
             </div>
 
@@ -39,10 +47,15 @@
                     <h2 class="text-lg font-semibold text-gray-700">Tarefas Pendentes</h2>
                     <p class="mt-4 text-4xl font-bold text-gray-900">{{ $pendingTasks ?? 0 }}</p>
                 </div>
+
+
             </div>
 
+            {{-- Tasks --}}
+        @livewire('company.company-task')
+
             <!-- Recent Activities -->
-            <div class="mt-8 bg-white shadow-xl rounded-lg p-6">
+            {{-- <div class="mt-8 bg-white shadow-xl rounded-lg p-6">
                 <h2 class="text-xl font-semibold text-gray-700 mb-6">Atividades Recentes</h2>
                 <div class="overflow-x-auto">
                     <table class="min-w-full table-auto text-left">
@@ -70,7 +83,11 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> --}}
+
+
+
+
         </main>
     </div>
 </div>
