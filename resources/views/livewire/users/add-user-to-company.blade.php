@@ -1,4 +1,4 @@
-<div class="space-x-4">
+<div>
     <!-- Botão para abrir o modal -->
     <button wire:click="toggleForm"
         class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200 mb-2">

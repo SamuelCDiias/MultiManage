@@ -1,8 +1,11 @@
-<div class="bg-white p-10 rounded-lg shadow-xl max-w-screen-lg mx-auto space-y-8 my-5">
+<div class="bg-white p-10 rounded-lg shadow-xl max-w-screen-lg mx-auto">
     <!-- Lista de Tarefas -->
-    <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+    <div class="bg-gray-50 p-6 rounded-lg">
         <h2 class="text-2xl font-bold mb-4">Lista de Tarefas</h2>
-        <div class="overflow-x-auto">
+        @if($tasks->isEmpty())
+            <h2 class="flex items-center justify-center">Nenhuma Tarefa</h2>
+        @else
+        <div class="overflow-x-auto shadow-xl rounded-md">
             <table class="min-w-full bg-white rounded-lg shadow">
                 <thead class="bg-gray-200">
                     <tr>
@@ -31,6 +34,8 @@
                 </tbody>
             </table>
         </div>
+        @endif
+
     </div>
 
     <!-- Modal de Criação -->

@@ -1,4 +1,5 @@
 <div class="max-w-6xl mx-auto p-6">
+
     <!-- Campo de filtro -->
     <div class="flex justify-between items-center mb-4">
         <input type="text" wire:model.live="nameFilter" placeholder="Filtrar empresa"
@@ -19,6 +20,9 @@
                 </button>
             </div>
         @else
+
+
+
             <!-- Lista de Empresas -->
             <div class="w-full bg-white shadow-lg rounded-lg overflow-hidden">
                 <div class="flex justify-between items-center px-6 py-4 border-b">
