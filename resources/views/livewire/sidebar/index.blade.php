@@ -1,4 +1,4 @@
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 to-teal-400">
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-950 to-blue-500">
     <div class="w-full max-w-6xl px-6 py-12 bg-white rounded-lg shadow-xl">
 
         <div class="flex justify-center">
@@ -13,11 +13,11 @@
             </p>
             <div class="space-y-6">
                 <a wire:click="register"
-                    class="inline-block px-10 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                    class="mr-3 inline-block px-10 py-4 bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 transform hover:scale-105 cursor-pointer">
                     Começar Agora
                 </a>
                 <a href="#"
-                    class="inline-block px-10 py-4 bg-transparent border-2 border-indigo-600 text-indigo-600 text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-indigo-300 transition-all duration-300 transform hover:scale-105">
+                    class="inline-block px-10 py-4 bg-transparent border-2 border-blue-600 text-blue-600 text-lg font-semibold rounded-lg shadow-lg hover:bg-blue-800 hover:border-blue-800 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-800 transition-all duration-300 transform hover:scale-105">
                     Saiba Mais
                 </a>
             </div>
@@ -27,7 +27,7 @@
         <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
             <!-- Funcionalidade 1 -->
             <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="w-16 h-16 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
                 </svg>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">Gestão Simplificada</h3>
@@ -36,7 +36,7 @@
 
             <!-- Funcionalidade 2 -->
             <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="w-16 h-16 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
                 </svg>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">Relatórios em Tempo Real</h3>
@@ -45,7 +45,7 @@
 
             <!-- Funcionalidade 3 -->
             <div class="flex flex-col items-center p-8 bg-indigo-50 rounded-lg shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                <svg class="w-16 h-16 text-indigo-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg class="w-16 h-16 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7" />
                 </svg>
                 <h3 class="text-xl font-semibold text-gray-800 mb-2">Segurança e Privacidade</h3>
@@ -57,7 +57,7 @@
         <div class="mt-12 text-center">
             <p class="text-sm text-gray-600 mb-2">Já tem uma conta?</p>
             <a wire:click="login"
-                class="text-sm font-medium text-indigo-600 hover:underline transition-all duration-200 cursor-pointer">Faça login</a>
+                class="text-sm font-medium text-blue-600 hover:underline transition-all duration-200 cursor-pointer">Faça login</a>
         </div>
     </div>
 </div>

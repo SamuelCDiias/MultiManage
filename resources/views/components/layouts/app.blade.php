@@ -19,7 +19,7 @@
     @livewireStyles
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300 min-h-screen flex flex-col">
+<body class="bg-gray-100 dark:bg-blue-950 transition-colors duration-300 min-h-screen flex flex-col">
 
     <div class="flex flex-1 w-full">
 
