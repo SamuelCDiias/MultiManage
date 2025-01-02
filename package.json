@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
-        "alpinejs": "^3.4.2",
+        "alpinejs": "^3.14.8",
         "autoprefixer": "^10.4.2",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
@@ -17,6 +17,7 @@
         "vite": "^6.0"
     },
     "dependencies": {
-        "sweetalert2": "^11.15.0"
+        "@alpinejs/morph": "^3.14.8",
+        "sweetalert2": "^11.6.13"
     }
 }
