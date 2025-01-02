@@ -1,6 +1,10 @@
 <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-indigo-500 to-teal-400">
     <div class="w-full max-w-6xl px-6 py-12 bg-white rounded-lg shadow-xl">
 
+        <div class="flex justify-center">
+            <img class="size-32 mb-5" src="{{ asset('image/favicon.png') }}">
+        </div>
+
         <!-- Seção de boas-vindas -->
         <div class="text-center mb-12">
             <h2 class="text-5xl font-extrabold text-gray-900 mb-6">Bem-vindo ao MultiManage</h2>
