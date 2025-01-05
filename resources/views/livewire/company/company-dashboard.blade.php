@@ -1,4 +1,6 @@
 <div class="flex min-h-screen bg-gray-100">
+    {{-- Script Charts --}}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Main Content -->
     <main class="flex-1 p-6">
         <!-- Header -->
@@ -24,26 +26,26 @@
 
         <!-- Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div
-                class="bg-white shadow-md rounded-lg p-6 border-t-4 border-blue-500 transition hover:scale-105">
-                <h2 class="text-lg font-semibold text-gray-700">Total de Empresas</h2>
+            <div class="bg-white shadow-md rounded-lg p-6 border-t-4 border-blue-500 transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-gray-700">Total de Clientes</h2>
                 <p class="mt-4 text-4xl font-bold text-gray-900">{{ $totalCompanies ?? 0 }}</p>
             </div>
-            <div
-                class="bg-white shadow-md rounded-lg p-6 border-t-4 border-green-500 transition hover:scale-105">
+            <div class="bg-white shadow-md rounded-lg p-6 border-t-4 border-green-500 transition hover:scale-105">
                 <h2 class="text-lg font-semibold text-gray-700">Usuários Ativos</h2>
                 <p class="mt-4 text-4xl font-bold text-gray-900">{{ $activeUsers ?? 0 }}</p>
             </div>
-            <div
-                class="bg-white shadow-md rounded-lg p-6 border-t-4 border-yellow-500 transition hover:scale-105">
-                <h2 class="text-lg font-semibold text-gray-700">Faturamento Mensal</h2>
+            <div class="bg-white shadow-md rounded-lg p-6 border-t-4 border-yellow-500 transition hover:scale-105">
+                <h2 class="text-lg font-semibold text-gray-700">Faturamento Anual</h2>
                 <p class="mt-4 text-4xl font-bold text-gray-900">R$ {{ $monthlyRevenue ?? '0,00' }}</p>
             </div>
-            <div
-                class="bg-white shadow-md rounded-lg p-6 border-t-4 border-red-500 transition hover:scale-105">
+            <div class="bg-white shadow-md rounded-lg p-6 border-t-4 border-red-500 transition hover:scale-105">
                 <h2 class="text-lg font-semibold text-gray-700">Tarefas Pendentes</h2>
-                <p class="mt-4 text-4xl font-bold text-gray-900">{{ $pendingTasks ?? 0 }}</p>
+                <p class="mt-4 text-4xl font-bold text-gray-900">{{ count($tasks) ?? 0 }}</p>
             </div>
+        </div>
+
+        <div class="bg-white rounded-lg p-6 mb-8">
+            @livewire('charts.billings')
         </div>
 
         <!-- Tasks -->
@@ -81,5 +83,9 @@
                 </table>
             </div>
         </div> --}}
+
+
     </main>
+    {{-- Script Charts --}}
+    @livewireChartsScripts
 </div>

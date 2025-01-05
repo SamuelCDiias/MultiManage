@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Livewire\SideBar;
+namespace App\Livewire\Company;
 
 use App\Models\Company;
+use App\Models\Task;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
-class Dashboard extends Component
+class CompanyDashboard extends Component
 {
-
     public $company;
 
     public function mount(){
@@ -29,9 +30,11 @@ class Dashboard extends Component
         $this->dispatch('createTask', session('active_company'));
     }
 
-
+    #[On('refresh')]
     public function render()
     {
-        return view('livewire.sidebar.dashboard', ['company' => $this->company]);
+        $tasks = Task::where('company_id', $this->company->id)->get();
+
+        return view('livewire.company.company-dashboard', ['company' => $this->company, 'tasks' => $tasks]);
     }
 }

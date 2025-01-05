@@ -21,23 +21,22 @@
 
 <body class="bg-gray-100 dark:bg-blue-950 transition-colors duration-300 min-h-screen flex flex-col">
 
-    <div class="flex flex-1 w-full">
+    <div class="grid grid-cols-[250px_1fr] h-screen">
 
+        {{-- Side Bar --}}
         @livewire('sidebar.side-bar')
 
         <!-- Main Content -->
         <main class="flex-1 overflow-y-auto">
-
             {{ $slot }}
-
         </main>
-
 
     </div>
 
 
 
     @livewireScripts
+    
     <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

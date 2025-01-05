@@ -1,7 +1,7 @@
 <div>
     <!-- Botão para abrir o modal -->
     <button wire:click="toggleForm"
-        class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-200 mb-2">
+        class="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-600 shadow-lg shadow-blue-500/50 flex items-center space-x-2 transition">
         Adicionar Usuário
     </button>
 
