@@ -88,10 +88,9 @@ class CompanyTask extends Component
     }
 
 
-    public function delete($id)
+    public function delete($taskId)
     {
-        Task::findOrFail($id)->delete();
-        $this->dispatch('refresh');
+        $this->dispatch('task-delete', $taskId);
     }
 
     #[On('refresh')]

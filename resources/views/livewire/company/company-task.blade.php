@@ -78,6 +78,8 @@
         </div>
     @endif
 
+    @livewire('company.company-task-delete')
+
     {{-- SweetAlert --}}
 
     <script>
