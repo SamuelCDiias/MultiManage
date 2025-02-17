@@ -78,4 +78,19 @@
         </div>
     @endif
 
+    {{-- SweetAlert --}}
+
+    <script>
+        window.addEventListener('notification', (event) => {
+            let data = event.detail;
+            Swal.fire({
+                position: data.position,
+                icon: data.type,
+                title: data.title,
+                showConfirmButton: false,
+                timer: 2000
+            });
+        });
+    </script>
+
 </div>

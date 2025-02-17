@@ -45,6 +45,14 @@ class CompanyTask extends Component
         $this->showForm();
 
         $this->resetInputFields();
+
+        $this->dispatch(
+            'notification',
+            type: 'success',
+            title: 'Task created successfully',
+            position: 'center'
+        );
+
         $this->dispatch('refresh');
     }
 
